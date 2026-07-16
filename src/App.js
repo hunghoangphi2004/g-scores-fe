@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import { useRoutes } from 'react-router-dom';
+import routes from './routes/index'
 
 function App() {
-  return (
-    <>
-      G-scores
-    </>
-  );
+  const element = useRoutes(routes);
+  return element;
 }
 
 export default App;
