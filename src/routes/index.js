@@ -3,6 +3,7 @@ import Dashboard from "../pages/Dashboard";
 import SearchScores from "../pages/SearchScores";
 import Reports from "../pages/Reports";
 import MainLayout from "../layouts/MainLayouts";
+import Error404 from "../pages/Error404";
 
 const routes = [
     {
@@ -23,6 +24,10 @@ const routes = [
             },
         ],
     },
+    {
+        path: "*",
+        element: <Error404 />,
+    }
 ];
 
 export default routes;

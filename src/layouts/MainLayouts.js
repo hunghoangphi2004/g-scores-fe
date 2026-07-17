@@ -58,7 +58,7 @@ function MainLayout() {
                 <div
                     className="main-layout__logo"
                 >
-                    G-Scores
+                    {collapsed ? "G": "G-Scores"}
                 </div>
                 <Menu
                     className="main-layout__menu"

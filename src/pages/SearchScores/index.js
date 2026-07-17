@@ -14,7 +14,6 @@ function SearchScores() {
             setLoading(true);
 
             const response = await getScoreBySbd(values.sbd);
-            console.log(response)
 
             if (response.success) {
                 setScore(response.score);
@@ -39,8 +38,6 @@ function SearchScores() {
             setLoading(false);
         }
     };
-
-    console.log(score)
 
     return (
         <>

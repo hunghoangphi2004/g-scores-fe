@@ -14,6 +14,7 @@ import {
     Pie,
     Cell,
 } from "recharts";
+import "./Reports.scss"
 
 function Reports() {
 
@@ -25,7 +26,6 @@ function Reports() {
             setLoading(true);
 
             const response = await getSubjectStatistic(subject);
-            console.log(response)
 
             setData(response.result);
         } catch (error) {
@@ -66,24 +66,29 @@ function Reports() {
 
     return (
         <>
-            <Select
-                onChange={handleSelectSubject}
-                placeholder="Select a subject"
-                style={{ width: 250, marginBottom: 24 }}
-                options={[
-                    { value: "toan", label: "Toán" },
-                    { value: "ngu_van", label: "Văn" },
-                    { value: "ngoai_ngu", label: "Ngoại ngữ" },
-                    { value: "vat_li", label: "Vật lí" },
-                    { value: "hoa_hoc", label: "Hoá học" },
-                    { value: "sinh_hoc", label: "Sinh học" },
-                    { value: "lich_su", label: "Lịch sử" },
-                    { value: "dia_li", label: "Địa lí" },
-                    { value: "gdcd", label: "GDCD" },
-                ]}
-            />
+            <div style={{ position: "relative" }}>
+                {loading && (
+                    <div className="reports__loading">
+                        <Spin size="large" />
+                    </div>
+                )}
+                <Select
+                    onChange={handleSelectSubject}
+                    placeholder="Select a subject"
+                    style={{ width: 250, marginBottom: 24 }}
+                    options={[
+                        { value: "toan", label: "Toán" },
+                        { value: "ngu_van", label: "Văn" },
+                        { value: "ngoai_ngu", label: "Ngoại ngữ" },
+                        { value: "vat_li", label: "Vật lí" },
+                        { value: "hoa_hoc", label: "Hoá học" },
+                        { value: "sinh_hoc", label: "Sinh học" },
+                        { value: "lich_su", label: "Lịch sử" },
+                        { value: "dia_li", label: "Địa lí" },
+                        { value: "gdcd", label: "GDCD" },
+                    ]}
+                />
 
-            <Spin spinning={loading}>
                 {data.subject && (
                     <Row gutter={[24, 24]}>
                         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
@@ -130,7 +135,7 @@ function Reports() {
                         </Col>
                     </Row>
                 )}
-            </Spin>
+            </div>
         </>
     )
 }

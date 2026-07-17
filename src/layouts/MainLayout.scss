@@ -1,7 +1,8 @@
 .main-layout {
     min-height: 100vh;
 
-    &__sider {}
+    &__sider {
+    }
 
     &__logo {
         height: 64px;
@@ -10,14 +11,14 @@
         align-items: center;
         color: #fff;
         font-size: 22px;
-        font-weight: "bold";
+        font-weight: bold;
     }
 
     &__menu {
         .ant-menu-item {
             height: 45px;
             line-height: 52px;
-            margin: 8px 0;
+            margin: 20px 0;
         }
     }
 
@@ -29,10 +30,11 @@
     &__toggle {
         font-size: 16px;
         width: 64px;
-        height: 64px;
+        height: 64px;   
     }
 
     &__content {
+        position: relative;
         margin: 24px 16px;
         padding: 24px;
         min-height: 280px;
