@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getSubjectStatistic } from "../../services/reportService";
-import { Select, notification, Spin } from 'antd';
+import { Select, notification, Spin, Row, Col } from "antd";
 import {
     ResponsiveContainer,
     BarChart,
@@ -10,6 +10,9 @@ import {
     Tooltip,
     CartesianGrid,
     Legend,
+    PieChart,
+    Pie,
+    Cell,
 } from "recharts";
 
 function Reports() {
@@ -54,6 +57,13 @@ function Reports() {
         },
     ];
 
+    const COLORS = [
+        "#52c41a",
+        "#1890ff",
+        "#faad14",
+        "#ff4d4f",
+    ];
+
     return (
         <>
             <Select
@@ -75,26 +85,50 @@ function Reports() {
 
             <Spin spinning={loading}>
                 {data.subject && (
-                    <ResponsiveContainer width="100%" height={400}>
-                        <BarChart width={600} height={300} data={chartData}>
-                            <XAxis dataKey="level" stroke="#8884d8" />
-                            <YAxis />
-                            <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
-                            <Legend
-                                width={100}
-                                wrapperStyle={{
-                                    top: 40,
-                                    right: 20,
-                                    backgroundColor: '#f5f5f5',
-                                    border: '1px solid #d5d5d5',
-                                    borderRadius: 3,
-                                    lineHeight: '40px',
-                                }}
-                            />
-                            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-                            <Bar dataKey="count" fill="#8884d8" barSize={30} />
-                        </BarChart>
-                    </ResponsiveContainer>
+                    <Row gutter={[24, 24]}>
+                        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                            <ResponsiveContainer width="100%" height={400}>
+                                <BarChart data={chartData}>
+                                    <XAxis dataKey="level" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <Bar
+                                        dataKey="count"
+                                        fill="#1677ff"
+                                        barSize={30}
+                                    />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </Col>
+
+                        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                            <ResponsiveContainer width="100%" height={400}>
+                                <PieChart>
+                                    <Pie
+                                        data={chartData}
+                                        dataKey="count"
+                                        nameKey="level"
+                                        outerRadius={120}
+                                        label={({ percent }) =>
+                                            `${(percent * 100).toFixed(1)}%`
+                                        }
+                                    >
+                                        {chartData.map((_, index) => (
+                                            <Cell
+                                                key={index}
+                                                fill={COLORS[index]}
+                                            />
+                                        ))}
+                                    </Pie>
+
+                                    <Tooltip />
+                                    <Legend />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </Col>
+                    </Row>
                 )}
             </Spin>
         </>
