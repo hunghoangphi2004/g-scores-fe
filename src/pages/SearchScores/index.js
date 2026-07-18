@@ -1,7 +1,7 @@
 import { Card, Button, Form, Input, Space, Descriptions, Empty, notification } from "antd";
 import './SearchScores.scss';
 import { getScoreBySbd } from "../../services/scoreService";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 function SearchScores() {
 
