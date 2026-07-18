@@ -54,11 +54,13 @@ function MainLayout() {
                 className="main-layout__sider"
                 trigger={null}
                 collapsible
+                onCollapse={setCollapsed}
+                breakpoint="lg"
                 collapsed={collapsed}>
                 <div
                     className="main-layout__logo"
                 >
-                    {collapsed ? "G": "G-Scores"}
+                    {collapsed ? "G" : "G-Scores"}
                 </div>
                 <Menu
                     className="main-layout__menu"
