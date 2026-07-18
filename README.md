@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# G-Scores Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Giới thiệu
 
-## Available Scripts
+Frontend của **G-Scores** được xây dựng bằng **ReactJS**, **Ant Design** và **Recharts**, cung cấp giao diện để:
 
-In the project directory, you can run:
+* Tra cứu điểm theo số báo danh.
+* Thống kê điểm theo từng môn bằng biểu đồ.
+* Hiển thị Top 10 thí sinh khối A.
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Frontend: https://g-scores-2k5p3wdyw-hungs-projects-88cb76d9.vercel.app
+* Backend API: https://g-scores-be-1l4i.onrender.com
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Công nghệ sử dụng
 
-### `npm test`
+* ReactJS
+* React Router DOM
+* Ant Design
+* Recharts
+* SCSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Cấu trúc thư mục
 
-### `npm run build`
+```text
+Frontend
+├── public/
+├── src
+│   ├── layouts/        # Layout của ứng dụng
+│   ├── pages/          # Các trang
+│   ├── routes/         # Cấu hình Router
+│   ├── services/       # Gọi API đến Backend
+    ├── utils/          # Gọi API đến Backend
+│   ├── App.js
+│   └── index.js
+├── .env
+├── package.json
+└── README.md
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Hướng dẫn chạy dự án
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/hunghoangphi2004/g-scores-fe.git
+cd g-scores-fe
+```
 
-### `npm run eject`
+### 2. Cài đặt thư viện
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Chạy Backend (nếu chưa có)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Frontend cần kết nối với Backend để lấy dữ liệu.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Clone Backend:
 
-## Learn More
+```bash
+git clone https://github.com/hunghoangphi2004/g-scores-be.git
+cd g-scores-be
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Tạo file `.env`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```env
+PORT=3000
 
-### Code Splitting
+MONGO_URL=YOUR_MONGO_DATABASE_URL
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Import dữ liệu:
 
-### Analyzing the Bundle Size
+```bash
+npm run seed
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Khởi động Backend:
 
-### Making a Progressive Web App
+```bash
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Backend mặc định chạy tại:
 
-### Advanced Configuration
+```text
+http://localhost:3000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 4. Cấu hình biến môi trường
 
-### Deployment
+Tạo file `.env`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Nếu chạy Backend cục bộ:
 
-### `npm run build` fails to minify
+```env
+REACT_APP_API_DOMAIN=http://localhost:3000/api
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Nếu sử dụng Backend đã triển khai:
+
+```env
+REACT_APP_API_DOMAIN=https://g-scores-be-1l4i.onrender.com/api
+```
+
+### 5. Khởi động Frontend
+
+```bash
+npm start
+```
+
+Mặc định Frontend chạy tại:
+
+```text
+http://localhost:3001
+```
+
+## Chức năng
+
+* Tra cứu điểm theo số báo danh.
+![alt text](src/assets/images/image-1.png)
+* Thống kê điểm theo từng môn bằng biểu đồ.
+![alt text](src/assets/images/image-2.png)
+* Hiển thị Top 10 thí sinh khối A.
+![alt text](src/assets/images/image.png)
