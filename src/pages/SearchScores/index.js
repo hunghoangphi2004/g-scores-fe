@@ -4,8 +4,6 @@ import { getScoreBySbd } from "../../services/scoreService";
 import { useState} from "react";
 
 function SearchScores() {
-
-    const [sbd, setSbd] = useState(null);
     const [score, setScore] = useState({});
     const [loading, setLoading] = useState(false);
 
@@ -17,7 +15,6 @@ function SearchScores() {
 
             if (response.success) {
                 setScore(response.score);
-                setSbd(values.sbd);
             } else {
                 setScore({})
                 notification.error({
