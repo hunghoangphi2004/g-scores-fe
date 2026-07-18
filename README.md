@@ -10,7 +10,7 @@ Frontend của **G-Scores** được xây dựng bằng **ReactJS**, **Ant Desig
 
 ## Demo
 
-* Frontend: https://g-scores-2k5p3wdyw-hungs-projects-88cb76d9.vercel.app
+* Frontend: https://g-scores-fe-henna.vercel.app
 * Backend API: https://g-scores-be-1l4i.onrender.com
 
 ## Công nghệ sử dụng
